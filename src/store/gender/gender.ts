@@ -1,7 +1,12 @@
-import { IState, Action, GenderActionTypes } from "../../types/state";
+import {
+  IState,
+  IStateGender,
+  Action,
+  GenderActionTypes,
+} from "../../types/state";
 import { extend } from "../../utils";
 
-const initialState: IState = {
+const initialState: IStateGender = {
   checkedGender: "male",
 };
 

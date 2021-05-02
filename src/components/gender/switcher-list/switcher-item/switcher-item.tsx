@@ -1,16 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { ActionCreator } from "../../../store/gender/gender";
+import { ActionCreator } from "../../../../store/gender/gender";
 
-interface SwitcherProps {
+interface SwitcherItemProps {
   gender: string;
   checked: string;
 }
 
-const Switcher: React.FC<SwitcherProps> = ({ gender = "", checked }) => {
+const SwitcherItem: React.FC<SwitcherItemProps> = ({ gender, checked }) => {
   const dispatch = useDispatch();
-
-  console.log(`стейт ${gender}`, `выбран ${checked}`);
 
   return (
     <li className="switcher__item">
@@ -30,4 +28,4 @@ const Switcher: React.FC<SwitcherProps> = ({ gender = "", checked }) => {
   );
 };
 
-export default Switcher;
+export default SwitcherItem;

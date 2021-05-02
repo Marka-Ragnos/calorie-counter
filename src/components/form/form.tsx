@@ -1,5 +1,7 @@
 import React from "react";
 import Gender from "../gender";
+import Parameters from "../parameters";
+import Activity from "../activity";
 
 const Form: React.FC = () => {
   return (
@@ -10,145 +12,9 @@ const Form: React.FC = () => {
       method="post"
     >
       <Gender />
-      <fieldset className="form__item form__parameters" name="parameters">
-        <legend className="visually-hidden">Физические параметры</legend>
-        <div className="inputs-group">
-          <div className="input">
-            <div className="input__heading">
-              <label className="heading" htmlFor="age">
-                Возраст
-              </label>
-              <span className="input__heading-unit">лет</span>
-            </div>
-            <div className="input__wrapper">
-              <input
-                type="text"
-                id="age"
-                name="age"
-                placeholder={"0"}
-                inputMode="decimal"
-                maxLength={3}
-                required
-              />
-            </div>
-          </div>
-          <div className="input">
-            <div className="input__heading">
-              <label className="heading" htmlFor="height">
-                Рост
-              </label>
-              <span className="input__heading-unit">см</span>
-            </div>
-            <div className="input__wrapper">
-              <input
-                type="text"
-                id="height"
-                name="height"
-                placeholder={"0"}
-                inputMode="decimal"
-                maxLength={3}
-                required
-              />
-            </div>
-          </div>
-          <div className="input">
-            <div className="input__heading">
-              <label className="heading" htmlFor="weight">
-                Вес
-              </label>
-              <span className="input__heading-unit">кг</span>
-            </div>
-            <div className="input__wrapper">
-              <input
-                type="text"
-                id="weight"
-                name="weight"
-                placeholder={"0"}
-                inputMode="decimal"
-                maxLength={3}
-                required
-              />
-            </div>
-          </div>
-        </div>
-      </fieldset>
-      <fieldset className="form__item">
-        <legend className="heading">Физическая активность</legend>
-        <ul className="radios-group">
-          <li className="radio">
-            <div className="radio__wrapper">
-              <input
-                id="activity-minimal"
-                name="activity"
-                defaultValue="min"
-                type="radio"
-                defaultChecked
-                required
-              />
-              <label htmlFor="activity-minimal">Минимальная</label>
-            </div>
-            <p className="radio__description">
-              Сидячая работа и нет физических нагрузок
-            </p>
-          </li>
-          <li className="radio">
-            <div className="radio__wrapper">
-              <input
-                id="activity-low"
-                name="activity"
-                defaultValue="low"
-                type="radio"
-                required
-              />
-              <label htmlFor="activity-low">Низкая</label>
-            </div>
-            <p className="radio__description">
-              Редкие, нерегулярные тренировки, активность в быту
-            </p>
-          </li>
-          <li className="radio">
-            <div className="radio__wrapper">
-              <input
-                id="activity-medium"
-                name="activity"
-                defaultValue="medium"
-                type="radio"
-                required
-              />
-              <label htmlFor="activity-medium">Средняя</label>
-            </div>
-            <p className="radio__description">Тренировки 3-5 раз в неделю</p>
-          </li>
-          <li className="radio">
-            <div className="radio__wrapper">
-              <input
-                id="activity-high"
-                name="activity"
-                defaultValue="high"
-                type="radio"
-                required
-              />
-              <label htmlFor="activity-high">Высокая</label>
-            </div>
-            <p className="radio__description">Тренировки 6-7 раз в неделю</p>
-          </li>
-          <li className="radio">
-            <div className="radio__wrapper">
-              <input
-                id="activity-maximal"
-                name="activity"
-                defaultValue="max"
-                type="radio"
-                required
-              />
-              <label htmlFor="activity-maximal">Очень высокая</label>
-            </div>
-            <p className="radio__description">
-              Больше 6 тренировок в неделю и физическая работа
-            </p>
-          </li>
-        </ul>
-      </fieldset>
+      <Parameters />
+      <Activity />
+
       <div className="form__submit">
         <button
           className="form__submit-button button"
