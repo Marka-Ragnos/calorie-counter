@@ -3,17 +3,18 @@ import {
   Action,
   ParametersActionTypes,
 } from "../../types/state";
+import { formatInput } from "../../utils";
 
 const initialState: IStateParameters = {
-  age: 0,
-  height: 0,
-  weight: 0,
+  age: "",
+  height: "",
+  weight: "",
 };
 
 export const ActionCreator = {
   changeParameters: (evt: React.ChangeEvent<HTMLInputElement>) => ({
     type: ParametersActionTypes.CHANGE_PARAMETERS,
-    payload: { [evt.currentTarget.name]: evt.currentTarget.value },
+    payload: { [evt.currentTarget.name]: formatInput(evt.currentTarget.value) },
   }),
 };
 

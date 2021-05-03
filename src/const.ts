@@ -3,3 +3,7 @@ export enum NameSpace {
   PARAMETERS = `PARAMETERS`,
   ACTIVITY = `ACTIVITY`,
 }
+
+export const LEAD_ZERO = /^0+/;
+
+export const NOT_NUMBERS = /[^\d]/g;

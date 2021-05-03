@@ -31,9 +31,10 @@ const ParametersItem: React.FC<ParametersItemProps> = ({
           type="text"
           id={parameter}
           name={parameter}
-          placeholder={String(parameters[parameter])}
+          placeholder={"0"}
           inputMode="decimal"
           maxLength={3}
+          value={parameters[parameter]}
           required
         />
       </div>

@@ -12,7 +12,7 @@ export interface IStateGender {
   checkedGender: string;
 }
 export interface IStateParameters {
-  [index: string]: number;
+  [index: string]: string;
 }
 export interface IStateActivity {
   checkedActivity: string;

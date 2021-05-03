@@ -13,7 +13,7 @@ const initialState: IStateActivity = {
 export const ActionCreator = {
   changeActivity: (evt: React.MouseEvent<HTMLInputElement>) => ({
     type: ActivityActionTypes.CHANGE_ACTIVITY,
-    payload: evt.currentTarget.defaultValue,
+    payload: evt.currentTarget.value,
   }),
 };
 
