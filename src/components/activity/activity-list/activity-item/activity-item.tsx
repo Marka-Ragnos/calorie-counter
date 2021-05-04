@@ -27,8 +27,8 @@ const ActivityItem: React.FC<ActivityItemProps> = ({
           name="activity"
           value={value}
           type="radio"
-          defaultChecked={checked === value ? true : false}
-          onClick={(evt) => dispatch(ActionCreator.changeActivity(evt))}
+          checked={checked === value ? true : false}
+          onChange={(evt) => dispatch(ActionCreator.changeActivity(evt))}
           required
         />
         <label htmlFor={`activity-${title}`}>{description}</label>

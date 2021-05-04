@@ -1,11 +1,62 @@
 import React from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useDispatch } from "react-redux";
 import { checkAllFields, checkOneField } from "../../utils";
+import { ActionCreator as ActionCreatorActivity } from "../../store/activity/activity";
+import { ActionCreator as ActionCreatorGender } from "../../store/gender/gender";
+import { ActionCreator as ActionCreatorParameters } from "../../store/parameters/parameters";
+import { ActionCreator as ActionCreatorResult } from "../../store/result/result";
+import {
+  calculateNormResult,
+  calculateMinResult,
+  calculateMaxResult,
+} from "../../utils";
 
 const SubmitForm = () => {
   const parameters = useTypedSelector((state) => state.PARAMETERS);
-  const { age, height, weight } = parameters;
-console.log(age, height, weight);
+  const { checkedActivity: valueProps } = useTypedSelector(
+    (state) => state.ACTIVITY
+  );
+  const { checkedGender: genderProps } = useTypedSelector(
+    (state) => state.GENDER
+  );
+  const { normResult } = useTypedSelector((state) => state.RESULT);
+
+  const {
+    age: ageProps,
+    height: heightProps,
+    weight: weightProps,
+  } = parameters;
+
+  const dispatch = useDispatch();
+
+  const clearState = () => {
+    dispatch(ActionCreatorActivity.clearActivity());
+    dispatch(ActionCreatorGender.clearGender());
+    dispatch(ActionCreatorParameters.clearParameters());
+  };
+
+  const calculate = (evt: React.MouseEvent<HTMLButtonElement>) => {
+    evt.preventDefault();
+    dispatch(ActionCreatorResult.changeVisibleBlock());
+    dispatch(
+      ActionCreatorResult.changeNormResult(
+        calculateNormResult(
+          ageProps,
+          weightProps,
+          heightProps,
+          genderProps,
+          valueProps
+        )
+      )
+    );
+    dispatch(
+      ActionCreatorResult.changeMinimalResult(calculateMinResult(normResult))
+    );
+    dispatch(
+      ActionCreatorResult.changeMaximalResult(calculateMaxResult(normResult))
+    );
+  };
 
   return (
     <div className="form__submit">
@@ -14,6 +65,7 @@ console.log(age, height, weight);
         name="submit"
         type="submit"
         disabled={checkAllFields(parameters)}
+        onClick={(evt) => calculate(evt)}
       >
         Рассчитать
       </button>
@@ -22,6 +74,7 @@ console.log(age, height, weight);
         name="reset"
         type="reset"
         disabled={checkOneField(parameters)}
+        onClick={clearState}
       >
         <svg
           width={24}

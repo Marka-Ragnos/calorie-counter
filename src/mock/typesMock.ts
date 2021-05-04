@@ -6,6 +6,13 @@ type ParameterTypeItem = {
 
 export type ParametersType = ParameterTypeItem[];
 
+export type ResultTypeItem = {
+  title: string;
+  text: string;
+};
+
+export type ResultType = ResultTypeItem[];
+
 export type ActivityTypeItem = {
   title: string;
   value: string;

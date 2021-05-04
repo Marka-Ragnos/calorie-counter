@@ -10,7 +10,7 @@ const SwitcherList: React.FC = () => {
     <ul className="switcher">
       {SwitcherData.map((genderItem, idx) => (
         <SwitcherItem
-          key={checkedGender + idx}
+          key={genderItem + idx}
           gender={genderItem}
           checked={checkedGender}
         />

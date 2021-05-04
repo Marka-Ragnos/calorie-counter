@@ -8,6 +8,12 @@ export const ParametersData: TypesMock.ParametersType = [
   { parameter: "weight", title: "Вес", unit: "кг" },
 ];
 
+export const ResultData: TypesMock.ResultType = [
+  { title: "norm", text: "поддержание веса" },
+  { title: "minimal", text: "снижение веса" },
+  { title: "maximal", text: "набор веса" },
+];
+
 export const ActivityData: TypesMock.ActivityType = [
   {
     title: "minimal",

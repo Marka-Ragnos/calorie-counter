@@ -16,6 +16,9 @@ export const ActionCreator = {
     type: ParametersActionTypes.CHANGE_PARAMETERS,
     payload: { [evt.currentTarget.name]: formatInput(evt.currentTarget.value) },
   }),
+  clearParameters: () => ({
+    type: ParametersActionTypes.CLEAR_PARAMETERS,
+  }),
 };
 
 export const reducer = (
@@ -25,6 +28,8 @@ export const reducer = (
   switch (action.type) {
     case ParametersActionTypes.CHANGE_PARAMETERS:
       return Object.assign({}, state, action.payload);
+    case ParametersActionTypes.CLEAR_PARAMETERS:
+      return initialState;
     default:
       return state;
   }
