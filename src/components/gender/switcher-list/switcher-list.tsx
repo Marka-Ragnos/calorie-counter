@@ -1,7 +1,7 @@
 import React from "react";
-import SwitcherItem from "./switcher-item";
-import { SwitcherData } from "../../../mock";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { SwitcherData } from "../../../mock";
+import SwitcherItem from "./switcher-item";
 
 const SwitcherList: React.FC = () => {
   const { checkedGender } = useTypedSelector((state) => state.GENDER);

@@ -1,10 +1,10 @@
+import { extend } from "../../utils";
 import {
   IState,
   IStateResult,
   Action,
   ResultActionTypes,
 } from "../../types/state";
-import { extend } from "../../utils";
 
 const initialState: IStateResult = {
   visibleBlock: false,

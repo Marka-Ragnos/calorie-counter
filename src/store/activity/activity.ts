@@ -1,10 +1,10 @@
+import { extend } from "../../utils";
 import {
   IState,
   IStateActivity,
   Action,
   ActivityActionTypes,
 } from "../../types/state";
-import { extend } from "../../utils";
 
 const initialState: IStateActivity = {
   checkedActivity: "min",

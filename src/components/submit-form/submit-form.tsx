@@ -1,12 +1,11 @@
 import React from "react";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
-import { checkAllFields, checkOneField } from "../../utils";
+import { checkAllFields, checkOneField, calculateResult } from "../../utils";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { ActionCreator as ActionCreatorActivity } from "../../store/activity/activity";
 import { ActionCreator as ActionCreatorGender } from "../../store/gender/gender";
 import { ActionCreator as ActionCreatorParameters } from "../../store/parameters/parameters";
 import { ActionCreator as ActionCreatorResult } from "../../store/result/result";
-import { calculateResult } from "../../utils";
 
 const SubmitForm = () => {
   const parameters = useTypedSelector((state) => state.PARAMETERS);
@@ -47,7 +46,6 @@ const SubmitForm = () => {
     );
     dispatch(ActionCreatorResult.changeVisibleBlock());
   };
-console.log(ageProps, weightProps, heightProps, genderProps, valueProps);
 
   return (
     <div className="form__submit">

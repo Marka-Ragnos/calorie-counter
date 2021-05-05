@@ -1,25 +1,10 @@
-import { IState, IStateParameters, IStateResult } from "./types/state";
 import {
   LEAD_ZERO,
   NOT_NUMBERS,
   CaloriesFormulaFactor,
   CaloriesMinMaxRatio,
 } from "./const";
-
-export const extend = (target: IState, update: IState): IState =>
-  Object.assign({}, target, update);
-
-export const formatInput = (str: string): string => {
-  return str.replace(NOT_NUMBERS, ``).replace(LEAD_ZERO, ``);
-};
-
-export const checkAllFields = (Parameters: IStateParameters) => {
-  return Object.values(Parameters).includes("");
-};
-
-export const checkOneField = (Parameters: IStateParameters) => {
-  return !Boolean(Object.values(Parameters).filter((i) => i.length > 0).length);
-};
+import { IState, IStateParameters, IStateResult } from "./types/state";
 
 const checkGender = (genderProps: "male" | "female") => {
   return genderProps === "male" ? 5 : -161;
@@ -44,6 +29,21 @@ const checkActivity = (
   }
 };
 
+export const extend = (target: IState, update: IState): IState =>
+  Object.assign({}, target, update);
+
+export const formatInput = (str: string): string => {
+  return str.replace(NOT_NUMBERS, ``).replace(LEAD_ZERO, ``);
+};
+
+export const checkAllFields = (Parameters: IStateParameters) => {
+  return Object.values(Parameters).includes("");
+};
+
+export const checkOneField = (Parameters: IStateParameters) => {
+  return !Boolean(Object.values(Parameters).filter((i) => i.length > 0).length);
+};
+
 export const calculateResult = (
   ageProps: string,
   weightProps: string,
@@ -60,5 +60,5 @@ export const calculateResult = (
   const norm = String(Math.round((weight + height - age + gender) * activity));
   const minimal = String(Math.round(Number(norm) * CaloriesMinMaxRatio.MIN));
   const maximal = String(Math.round(Number(norm) * CaloriesMinMaxRatio.MAX));
-  return { norm: norm, minimal: minimal, maximal: maximal };
+  return { norm, minimal, maximal };
 };

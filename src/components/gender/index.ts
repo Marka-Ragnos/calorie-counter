@@ -1,3 +1,3 @@
-import Gender from './gender';
+import Gender from "./gender";
 
 export default Gender;

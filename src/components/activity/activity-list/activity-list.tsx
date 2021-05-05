@@ -1,7 +1,7 @@
 import React from "react";
-import ActivityItem from "./activity-item";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { ActivityData } from "../../../mock";
+import ActivityItem from "./activity-item";
 
 const ActivityList: React.FC = () => {
   const { checkedActivity } = useTypedSelector((state) => state.ACTIVITY);

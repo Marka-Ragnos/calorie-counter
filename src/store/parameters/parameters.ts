@@ -1,9 +1,9 @@
+import { formatInput } from "../../utils";
 import {
   IStateParameters,
   Action,
   ParametersActionTypes,
 } from "../../types/state";
-import { formatInput } from "../../utils";
 
 const initialState: IStateParameters = {
   age: "",
