@@ -18,10 +18,10 @@ export interface IStateActivity {
   checkedActivity: string;
 }
 export interface IStateResult {
-  visibleBlock: boolean;
-  normResult?: string;
-  minimalResult?: string;
-  maximalResult?: string;
+  visibleBlock?: boolean;
+  norm?: string;
+  minimal?: string;
+  maximal?: string;
 }
 
 export type IState =
@@ -47,9 +47,8 @@ export enum ActivityActionTypes {
 
 export enum ResultActionTypes {
   CHANGE_VISIBLE_BLOCK = `CHANGE_VISIBLE_BLOCK`,
-  CHANGE_NORM_RESULT = `CHANGE_NORM_RESULT`,
-  CHANGE_MINIMAL_RESULT = `CHANGE_MINIMAL_RESULT`,
-  CHANGE_MAXIMAL_RESULT = `CHANGE_MAXIMAL_RESULT`,
+  CHANGE_UNVISIBLE_BLOCK = `CHANGE_UNVISIBLE_BLOCK`,
+  CHANGE_RESULT = `CHANGE_RESULT`,
 }
 
 export type Action = IAction | IGenderAction;

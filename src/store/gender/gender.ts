@@ -11,9 +11,9 @@ const initialState: IStateGender = {
 };
 
 export const ActionCreator = {
-  changeGender: (evt: React.MouseEvent<HTMLInputElement>) => ({
+  changeGender: (evt: React.ChangeEvent<HTMLInputElement>) => ({
     type: GenderActionTypes.CHANGE_GENDER,
-    payload: evt.currentTarget.defaultValue,
+    payload: evt.currentTarget.value,
   }),
   clearGender: () => ({
     type: GenderActionTypes.CLEAR_GENDER,

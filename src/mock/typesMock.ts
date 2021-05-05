@@ -9,6 +9,7 @@ export type ParametersType = ParameterTypeItem[];
 export type ResultTypeItem = {
   title: string;
   text: string;
+  calories?: string;
 };
 
 export type ResultType = ResultTypeItem[];

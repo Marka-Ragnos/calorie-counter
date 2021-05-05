@@ -1,11 +1,11 @@
 import React from "react";
 import { ResultTypeItem } from "../../../../mock/typesMock";
 
-const ResultItem: React.FC<ResultTypeItem> = ({ title, text }) => {
+const ResultItem: React.FC<ResultTypeItem> = ({ title, text, calories }) => {
   return (
     <li className="counter__result-item">
       <h3>
-        <span id={`calories-${title}`}>3 800</span> ккал
+        <span id={`calories-${title}`}>{calories}</span> ккал
       </h3>
       <p>{text}</p>
     </li>

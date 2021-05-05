@@ -1,5 +1,10 @@
-import { IState, IStateParameters } from "./types/state";
-import { LEAD_ZERO, NOT_NUMBERS, CaloriesFormulaFactor, CaloriesMinMaxRatio } from "./const";
+import { IState, IStateParameters, IStateResult } from "./types/state";
+import {
+  LEAD_ZERO,
+  NOT_NUMBERS,
+  CaloriesFormulaFactor,
+  CaloriesMinMaxRatio,
+} from "./const";
 
 export const extend = (target: IState, update: IState): IState =>
   Object.assign({}, target, update);
@@ -39,26 +44,21 @@ const checkActivity = (
   }
 };
 
-export const calculateNormResult = (
+export const calculateResult = (
   ageProps: string,
   weightProps: string,
   heightProps: string,
   genderProps: "male" | "female",
   valueProps: "min" | "low" | "medium" | "high" | "max"
-): string => {
+): IStateResult => {
   const age = CaloriesFormulaFactor.AGE * Number(ageProps);
   const weight = CaloriesFormulaFactor.WEIGHT * Number(weightProps);
   const height = CaloriesFormulaFactor.HEIGHT * Number(heightProps);
   const gender = checkGender(genderProps);
   const activity = checkActivity(valueProps);
 
-  return String(Math.round((weight + height - age + gender) * activity));
-};
-
-export const calculateMinResult = (normResult: number): string => {
-  return String(Math.round(normResult * CaloriesMinMaxRatio.MIN));
-};
-
-export const calculateMaxResult = (normResult: number): string => {
-  return String(Math.round(normResult * CaloriesMinMaxRatio.MAX));
+  const norm = String(Math.round((weight + height - age + gender) * activity));
+  const minimal = String(Math.round(Number(norm) * CaloriesMinMaxRatio.MIN));
+  const maximal = String(Math.round(Number(norm) * CaloriesMinMaxRatio.MAX));
+  return { norm: norm, minimal: minimal, maximal: maximal };
 };

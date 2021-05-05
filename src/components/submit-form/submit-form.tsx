@@ -6,11 +6,7 @@ import { ActionCreator as ActionCreatorActivity } from "../../store/activity/act
 import { ActionCreator as ActionCreatorGender } from "../../store/gender/gender";
 import { ActionCreator as ActionCreatorParameters } from "../../store/parameters/parameters";
 import { ActionCreator as ActionCreatorResult } from "../../store/result/result";
-import {
-  calculateNormResult,
-  calculateMinResult,
-  calculateMaxResult,
-} from "../../utils";
+import { calculateResult } from "../../utils";
 
 const SubmitForm = () => {
   const parameters = useTypedSelector((state) => state.PARAMETERS);
@@ -20,7 +16,6 @@ const SubmitForm = () => {
   const { checkedGender: genderProps } = useTypedSelector(
     (state) => state.GENDER
   );
-  const { normResult } = useTypedSelector((state) => state.RESULT);
 
   const {
     age: ageProps,
@@ -34,14 +29,14 @@ const SubmitForm = () => {
     dispatch(ActionCreatorActivity.clearActivity());
     dispatch(ActionCreatorGender.clearGender());
     dispatch(ActionCreatorParameters.clearParameters());
+    dispatch(ActionCreatorResult.changeUnVisibleBlock());
   };
 
   const calculate = (evt: React.MouseEvent<HTMLButtonElement>) => {
     evt.preventDefault();
-    dispatch(ActionCreatorResult.changeVisibleBlock());
     dispatch(
-      ActionCreatorResult.changeNormResult(
-        calculateNormResult(
+      ActionCreatorResult.changeResult(
+        calculateResult(
           ageProps,
           weightProps,
           heightProps,
@@ -50,13 +45,9 @@ const SubmitForm = () => {
         )
       )
     );
-    dispatch(
-      ActionCreatorResult.changeMinimalResult(calculateMinResult(normResult))
-    );
-    dispatch(
-      ActionCreatorResult.changeMaximalResult(calculateMaxResult(normResult))
-    );
+    dispatch(ActionCreatorResult.changeVisibleBlock());
   };
+console.log(ageProps, weightProps, heightProps, genderProps, valueProps);
 
   return (
     <div className="form__submit">

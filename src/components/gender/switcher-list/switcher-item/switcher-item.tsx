@@ -15,10 +15,10 @@ const SwitcherItem: React.FC<SwitcherItemProps> = ({ gender, checked }) => {
       <input
         id={`gender-${gender}`}
         name="gender"
-        defaultValue={gender}
+        value={gender}
         type="radio"
-        defaultChecked={checked === gender ? true : false}
-        onClick={(evt) => dispatch(ActionCreator.changeGender(evt))}
+        checked={checked === gender ? true : false}
+        onChange={(evt) => dispatch(ActionCreator.changeGender(evt))}
         required
       />
       <label htmlFor={`gender-${gender}`}>
